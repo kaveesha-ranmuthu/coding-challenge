@@ -33,5 +33,10 @@ for d in data:
         total_amt = d["total_value"]
         total += total_amt
 
-gpm = int(round(total / revenue))
-print("Gross Profit Margin: {}%".format(gpm))
+gross_prof = int(round((total / revenue) * 100))
+print("Gross Profit Margin: {}%".format(gross_prof))
+
+# -- NET PROFIT MARGIN --
+net_prof = ((revenue - expenses) / revenue) * 100
+net_prof_rounded = int(round(net_prof))
+print("Net Profit Margin: {}%".format(net_prof_rounded))
