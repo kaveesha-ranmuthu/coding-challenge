@@ -23,3 +23,15 @@ expenses_rounded = int(round(expenses))
 
 print("Revenue: ${:,}".format(revenue_rounded))
 print("Expenses: ${:,}".format(expenses_rounded))
+
+# -- GROSS PROFIT MARGIN --
+total = 0
+for d in data:
+    account_type = d["account_type"]
+    value_type = d["value_type"]
+    if account_type == "sales" and value_type == "debit":
+        total_amt = d["total_value"]
+        total += total_amt
+
+gpm = int(round(total / revenue))
+print("Gross Profit Margin: {}%".format(gpm))
