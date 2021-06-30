@@ -40,3 +40,28 @@ print("Gross Profit Margin: {}%".format(gross_prof))
 net_prof = ((revenue - expenses) / revenue) * 100
 net_prof_rounded = int(round(net_prof))
 print("Net Profit Margin: {}%".format(net_prof_rounded))
+
+# -- WORKING CAPITAL RATIO --
+assets = 0
+liabilities = 0
+for d in data:
+    account_cat = d["account_category"]
+    account_type = d["account_type"]
+    value_type = d["value_type"]
+    account_types_assets = ["current", "bank", "current_accounts_receivable"]
+    account_types_liab = ["current", "current_accounts_payable"]
+    if account_cat == "assets" and account_type in account_types_assets:
+        total_amt = d["total_value"]
+        if value_type == "debit":
+            assets += total_amt
+        elif value_type == "credit":
+            assets -= total_amt
+    if account_cat == "liability" and account_type in account_types_liab:
+        total_amt = d["total_value"]
+        if value_type == "credit":
+            liabilities += total_amt
+        elif value_type == "debit":
+            liabilities -= total_amt
+
+perc = int(round((assets / liabilities) * 100))
+print("Working Captial Ratio: {}%".format(perc))
