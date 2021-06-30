@@ -63,5 +63,5 @@ for d in data:
         elif value_type == "debit":
             liabilities -= total_amt
 
-perc = int(round((assets / liabilities) * 100))
-print("Working Captial Ratio: {}%".format(perc))
+wcr = int(round((assets / liabilities) * 100))
+print("Working Captial Ratio: {}%".format(wcr))
